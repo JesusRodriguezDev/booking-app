@@ -10,9 +10,8 @@ func main() {
 	const conferenceTickets = 50      //in Go variables have to either be assigned a value when created to imply data type, or declare the datatype i.e. var userName string
 	var remainingTickets uint = 50    //uint data type for possitive numbers.  This prevents negative numbers to be used
 	//var bookings []string //this creates a slice, which is more effecient than an array as it allows for dynamic size so a size does not have to be declared
-	bookings := []string{} //alternative way of declaring slice
+	bookings := []string{} //alternative way of declaring slice variable
 
-	//fmt.Println("Welcome to our", conferenceName, "booking application") //using normal println
 	fmt.Printf("Welcome to our %v booking application\n", conferenceName) //using Printf with a placeholder %v
 	fmt.Printf("We have total of %v tickets and %v are still available.\n", conferenceTickets, remainingTickets)
 	fmt.Println("Get your tickets here to attend")
