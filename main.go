@@ -12,9 +12,7 @@ func main() {
 	//var bookings []string //this creates a slice, which is more effecient than an array as it allows for dynamic size so a size does not have to be declared
 	bookings := []string{} //alternative way of declaring slice variable
 
-	fmt.Printf("Welcome to our %v booking application\n", conferenceName) //using Printf with a placeholder %v
-	fmt.Printf("We have total of %v tickets and %v are still available.\n", conferenceTickets, remainingTickets)
-	fmt.Println("Get your tickets here to attend")
+	greetUsers(conferenceName, conferenceTickets, remainingTickets)
 
 	for {
 		var firstName string
@@ -57,7 +55,22 @@ func main() {
 				break //break ends the loop
 			}
 		} else {
-			fmt.Println("Your input data is invalid, try again")
+			if !isValidName {
+				fmt.Println("first name of last name you entered is too short")
+			}
+			if !isValidEmail {
+				fmt.Println("email address you entered doesn't contain @sign")
+			}
+			if !isValidTicketNumber {
+				fmt.Println("number of tickets entered is invalid")
+			}
 		}
 	}
+}
+
+func greetUsers(confName string, confTickets int, remainingTickets uint) {
+	fmt.Printf("Welcome to our %v booking application\n", confName)
+	fmt.Printf("We have a total of %v tickets and %v are still available.\n", confTickets, remainingTickets)
+	fmt.Println("Get your tickets here to attend")
+
 }
