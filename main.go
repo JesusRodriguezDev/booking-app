@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt" //imports format package, used for things like Print, Println, etc
-	"strings"
+	"fmt"     //imports format package, used for things like Print, Println, etc
+	"strings" //imports strings package, used for string manipulation
 )
 
 func main() {
