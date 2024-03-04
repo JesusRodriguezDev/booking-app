@@ -6,11 +6,9 @@ import (
 )
 
 func main() {
-	conferenceName := "Go Conference" //simplified alternative variable declaration, cannot be used with const, only with var or if you want to define the data type
+	conferenceName := "Go Conference" //simplified alternative variable declaration, cannot be used with const, only with var, or if you want to define the data type
 	const conferenceTickets = 50      //in Go variables have to either be assigned a value when created to imply data type, or declare the datatype i.e. var userName string
 	var remainingTickets uint = 50    //uint data type for possitive numbers.  This prevents negative numbers to be used
-	//var bookings = [50]string{} //arrays have to have a declared fixed number of elements.  They also cannot contain different data types
-	//var bookings [50]string // another simpler way to declare an empty array
 	//var bookings []string //this creates a slice, which is more effecient than an array as it allows for dynamic size so a size does not have to be declared
 	bookings := []string{} //alternative way of declaring slice
 
@@ -37,11 +35,11 @@ func main() {
 		fmt.Println("Enter the number of tickets to purchase")
 		fmt.Scan(&userTickets)
 
-		// isValidName := len(firstName) >= 2 && len(lastName) >= 2
-		// isValidEmail := strings.Contains(email, "@")
-		// isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets
+		isValidName := len(firstName) >= 2 && len(lastName) >= 2
+		isValidEmail := strings.Contains(email, "@")
+		isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets
 
-		if userTickets <= remainingTickets {
+		if isValidName && isValidEmail && isValidTicketNumber {
 			remainingTickets = remainingTickets - userTickets
 			bookings = append(bookings, firstName+" "+lastName)
 
@@ -49,20 +47,18 @@ func main() {
 			fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
 
 			firstNames := []string{}
-
 			for _, booking := range bookings {
 				var names = strings.Fields(booking)
 				firstNames = append(firstNames, names[0])
 			}
 			fmt.Printf("The first names of the bookings are:  %v\n", firstNames)
-		} else {
-			fmt.Printf("We only have %v remaining tickets, so you can't book %v tickets\n", remainingTickets, userTickets)
-			continue
-		}
 
-		if remainingTickets == 0 {
-			fmt.Println("Our conference is booked out. Come back next year!")
-			break
+			if remainingTickets == 0 {
+				fmt.Println("Our conference is booked out. Come back next year!")
+				break //break ends the loop
+			}
+		} else {
+			fmt.Println("Your input data is invalid, try again")
 		}
 	}
 }
