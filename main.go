@@ -47,7 +47,7 @@ func main() {
 			fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
 
 			firstNames := []string{}
-			for _, booking := range bookings {
+			for _, booking := range bookings { //the underscore used after for, instead of index, declares an anonymous variable, since we just need it to start up the for loop, but won't use it later
 				var names = strings.Fields(booking)
 				firstNames = append(firstNames, names[0])
 			}
